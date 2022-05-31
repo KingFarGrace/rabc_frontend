@@ -1,59 +1,52 @@
 <template>
   <div>
+    <el-header><h2>后台管理系统</h2></el-header>
     <el-row>
       <el-col :span="4"
         ><div class="grid-content bg-purple-light">
+          <el-button icon="el-icon-menu" circle @click="returnMain"></el-button>
           <el-menu
             :router="true"
             default-active="2"
             class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
-          >
-            <el-submenu index="1">
+            ><el-menu-item index="/user">
+              <i class="el-icon-user-solid"></i>
+              <span slot="title">个人中心</span> </el-menu-item
+            ><el-menu-item index="/department">
+              <i class="el-icon-takeaway-box"></i>
+              <span slot="title">部门</span>
+            </el-menu-item>
+            <el-submenu>
               <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>导航一</span>
+                <i class="el-icon-pie-chart"></i>
+                <span>群组列表</span>
               </template>
-              <el-menu-item-group>
-                <template slot="title">分组一</template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
+              <el-menu-item index="/">a组</el-menu-item>
+              <el-menu-item index="/">b组</el-menu-item>
             </el-submenu>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
-            </el-menu-item>
           </el-menu>
         </div></el-col
       >
       <el-col :span="20"
         ><div>
           <el-row
-            ><el-col :span="2" offset="20"
-              ><el-menu
-                :router="true"
-                :default-active="activeIndex"
-                class="el-menu-demo"
-                mode="horizontal"
-                @select="handleSelect"
+            ><el-col :span="2" offset="20">
+              <el-button
+                type="primary"
+                icon="el-icon-upload"
+                plain
+                @click="goLogin"
+                >登录</el-button
               >
-                <el-menu-item index="/login" v-if="true">登录</el-menu-item>
-                <!-- <el-menu-item index="3">注销</el-menu-item> -->
-              </el-menu></el-col
-            ></el-row
+              <!-- <el-button
+                type="info"
+                icon="el-icon-switch-button"
+                plain
+                @click="goLogin"
+                >登录</el-button> -->
+            </el-col></el-row
           ><el-row>
             <el-col :span="20" offset="2"><router-view></router-view></el-col>
           </el-row></div
@@ -87,8 +80,12 @@
   padding: 10px 0;
   background-color: #f9fafc;
 }
-.el-breadcrumb {
-  font-size: large;
+.el-header {
+  border-radius: 4px;
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
 }
 </style>
 
@@ -101,6 +98,12 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    returnMain() {
+      this.$router.push("/");
+    },
+    goLogin() {
+      this.$router.push("/login");
     },
   },
 };

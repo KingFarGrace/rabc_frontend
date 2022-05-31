@@ -6,6 +6,8 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import NotFound from '@/components/NotFound'
 import Unavailable from '@/components/Unavailable'
+import User from '@/components/User'
+import Department from '@/components/Department'
 
 Vue.use(Router)
 
@@ -24,6 +26,16 @@ export default new Router({
           path: '/sys',
           name: 'SystemBulletin',
           component: SystemBulletin
+        },
+        {
+          path: '/user',
+          name: 'User',
+          component: User
+        },
+        {
+          path: '/department',
+          name: 'Department',
+          component: Department
         }
       ]
     },
