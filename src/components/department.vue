@@ -80,6 +80,35 @@
         </el-collapse-item>
         <el-collapse-item name="2">
           <template slot="title">
+            <p class="title">发布部门公告</p>
+          </template>
+          <el-form
+            :model="annoForm"
+            class="demo-form-inline"
+            style="width: 50%; margin: auto"
+          >
+            <el-form-item>
+              <el-input
+                v-model="title"
+                placeholder="请输入公告标题"
+                style="width: 50%; margin: auto"
+              ></el-input>
+              <el-input
+                type="textarea"
+                :rows="2"
+                placeholder="请输入公告内容"
+                v-model="textarea"
+                autosize
+              >
+              </el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submit">发布</el-button>
+            </el-form-item>
+          </el-form>
+        </el-collapse-item>
+        <el-collapse-item name="3">
+          <template slot="title">
             <p class="title">移除部门成员</p>
           </template>
           <el-table
@@ -98,7 +127,7 @@
             </el-table-column>
           </el-table>
         </el-collapse-item>
-        <el-collapse-item name="3">
+        <el-collapse-item name="4">
           <template slot="title">
             <p class="title">添加部门成员</p>
           </template>
@@ -161,6 +190,9 @@ export default {
           isPass: "未通过",
         },
       ],
+      annoForm: {},
+      title: "",
+      textarea: "",
       adminTable: [
         {
           uid: "120181080602",

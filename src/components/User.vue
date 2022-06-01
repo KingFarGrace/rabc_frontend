@@ -114,7 +114,7 @@
                   placeholder="请输入新密码"
                 ></el-input>
               </el-form-item>
-              <el-form-item label="重复输入新密码">
+              <el-form-item label="确认新密码">
                 <el-input
                   v-model="pwdReviseForm.newpwd"
                   placeholder="请输入相同的新密码"

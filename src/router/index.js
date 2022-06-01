@@ -9,6 +9,7 @@ import Unavailable from '@/components/Unavailable'
 import User from '@/components/User'
 import Department from '@/components/Department'
 import Group from '@/components/Group'
+import SystemAdmin from '@/components/SystemAdmin'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
           name: 'Group',
           component: Group
         },
+        {
+          path: '/sysAdmin',
+          name: 'SystemAdmin',
+          component: SystemAdmin
+        }
       ]
     },
     {

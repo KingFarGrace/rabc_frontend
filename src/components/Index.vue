@@ -11,6 +11,9 @@
             class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
+            ><el-menu-item index="/sysAdmin">
+              <i class="el-icon-user-solid"></i>
+              <span slot="title">系统管理员中心</span> </el-menu-item
             ><el-menu-item index="/user">
               <i class="el-icon-user-solid"></i>
               <span slot="title">个人中心</span> </el-menu-item
