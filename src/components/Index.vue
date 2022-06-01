@@ -23,8 +23,8 @@
                 <i class="el-icon-pie-chart"></i>
                 <span>群组列表</span>
               </template>
-              <el-menu-item index="/">a组</el-menu-item>
-              <el-menu-item index="/">b组</el-menu-item>
+              <el-menu-item index="/Group">a组</el-menu-item>
+              <el-menu-item index="/Group">b组</el-menu-item>
             </el-submenu>
           </el-menu>
         </div></el-col

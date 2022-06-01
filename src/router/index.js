@@ -8,6 +8,7 @@ import NotFound from '@/components/NotFound'
 import Unavailable from '@/components/Unavailable'
 import User from '@/components/User'
 import Department from '@/components/Department'
+import Group from '@/components/Group'
 
 Vue.use(Router)
 
@@ -36,7 +37,12 @@ export default new Router({
           path: '/department',
           name: 'Department',
           component: Department
-        }
+        },
+        {
+          path: '/group',
+          name: 'Group',
+          component: Group
+        },
       ]
     },
     {

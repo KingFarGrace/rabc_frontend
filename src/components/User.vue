@@ -28,7 +28,7 @@
       <el-collapse v-model="activeName" accordion style="margin-top: 20px">
         <el-collapse-item name="1">
           <template slot="title">
-            <p class="title" style="text-align: center">修改用户名</p>
+            <p class="title">修改用户名</p>
           </template>
           <div>
             <el-form
@@ -50,7 +50,7 @@
         </el-collapse-item>
         <el-collapse-item name="2">
           <template slot="title">
-            <p class="title" style="text-align: center">修改手机号</p>
+            <p class="title">修改手机号</p>
           </template>
           <div>
             <el-form
@@ -72,7 +72,7 @@
         </el-collapse-item>
         <el-collapse-item name="3">
           <template slot="title">
-            <p class="title" style="text-align: center">修改邮箱地址</p>
+            <p class="title">修改邮箱地址</p>
           </template>
           <div>
             <el-form
@@ -94,7 +94,7 @@
         </el-collapse-item>
         <el-collapse-item name="4">
           <template slot="title">
-            <p class="title" style="text-align: center">修改密码</p>
+            <p class="title">修改密码</p>
           </template>
           <div>
             <el-form
