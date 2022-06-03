@@ -6,31 +6,116 @@
         <template slot="title">
           <p class="title">发布系统公告</p>
         </template>
-        <div>
-          在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
-        </div>
+        <el-form
+          :model="annoForm"
+          class="demo-form-inline"
+          style="width: 50%; margin: auto"
+        >
+          <el-form-item>
+            <el-input
+              v-model="title"
+              placeholder="请输入公告标题"
+              style="width: 50%; margin: auto"
+            ></el-input>
+            <el-input
+              type="textarea"
+              :rows="2"
+              placeholder="请输入公告内容"
+              v-model="textarea"
+              autosize
+            >
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submit">发布</el-button>
+          </el-form-item>
+        </el-form>
       </el-collapse-item>
       <el-collapse-item name="2">
         <template slot="title">
           <p class="title">设置新部门</p>
         </template>
-        <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+        <el-form
+          :model="departForm"
+          class="demo-form-inline"
+          style="width: 50%; margin: auto"
+        >
+          <el-form-item>
+            <el-input
+              v-model="departName"
+              placeholder="请输入部门名称"
+              style="width: 50%; margin: auto"
+            ></el-input>
+            <el-input
+              type="textarea"
+              :rows="2"
+              placeholder="请输入部门简介"
+              v-model="departInfo"
+              autosize
+            >
+            </el-input>
+          </el-form-item>
+          <el-form-item
+            ><el-select
+              v-model="departLeaderID"
+              filterable
+              placeholder="请选择部门管理员ID"
+            >
+              <el-option
+                v-for="item in departLeaders"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option> </el-select
+          ></el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submit">添加</el-button>
+          </el-form-item>
+        </el-form>
       </el-collapse-item>
       <el-collapse-item name="3">
         <template slot="title">
           <p class="title">设置新群组</p>
         </template>
-        <div>
-          帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。
-        </div>
-      </el-collapse-item>
-      <el-collapse-item name="4">
-        <template slot="title">
-          <p class="title">用户任职</p>
-        </template>
-        <div>
-          结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
-        </div>
+        <el-form
+          :model="groupForm"
+          class="demo-form-inline"
+          style="width: 50%; margin: auto"
+        >
+          <el-form-item>
+            <el-input
+              v-model="groupName"
+              placeholder="请输入群组名称"
+              style="width: 50%; margin: auto"
+            ></el-input>
+            <el-input
+              type="textarea"
+              :rows="2"
+              placeholder="请输入群组简介"
+              v-model="groupInfo"
+              autosize
+            >
+            </el-input>
+          </el-form-item>
+          <el-form-item
+            ><el-select
+              v-model="groupLeaderID"
+              filterable
+              placeholder="请选择群组管理员ID"
+            >
+              <el-option
+                v-for="item in groupLeaders"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option> </el-select
+          ></el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submit">添加</el-button>
+          </el-form-item>
+        </el-form>
       </el-collapse-item>
     </el-collapse>
   </div>
@@ -54,5 +139,62 @@
 <script>
 export default {
   name: "SystemAdmin",
+  data() {
+    return {
+      annoForm: {},
+      title: "",
+      textarea: "",
+      departLeaders: [
+        {
+          value: "选项1",
+          label: "黄金糕",
+        },
+        {
+          value: "选项2",
+          label: "双皮奶",
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎",
+        },
+        {
+          value: "选项4",
+          label: "龙须面",
+        },
+        {
+          value: "选项5",
+          label: "北京烤鸭",
+        },
+      ],
+      departName: "",
+      departInfo: "",
+      departLeaderID: "",
+      groupLeaders: [
+        {
+          value: "选项1",
+          label: "黄金糕",
+        },
+        {
+          value: "选项2",
+          label: "双皮奶",
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎",
+        },
+        {
+          value: "选项4",
+          label: "龙须面",
+        },
+        {
+          value: "选项5",
+          label: "北京烤鸭",
+        },
+      ],
+      groupName: "",
+      groupInfo: "",
+      groupLeaderID: "",
+    };
+  },
 };
 </script>
