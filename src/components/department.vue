@@ -109,44 +109,47 @@
         </el-collapse-item>
         <el-collapse-item name="3">
           <template slot="title">
-            <p class="title">移除部门成员</p>
+            <p class="title">管理部门成员</p>
           </template>
-          <el-table
-            :data="memberTable"
-            style="width: 50%; margin: auto"
-            max-height="200"
+          <el-transfer
+            filterable
+            :filter-method="filterMethod"
+            filter-placeholder="请输入用户ID"
+            v-model="value"
+            :data="data"
+            :titles="['无部门用户', '部门成员']"
           >
-            <el-table-column prop="uid" label="用户ID" width="180">
-            </el-table-column>
-            <el-table-column prop="realname" label="用户真实姓名" width="180">
-            </el-table-column>
-            <el-table-column label="操作"
-              ><template>
-                <el-button type="danger">移出部门</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
+          </el-transfer>
         </el-collapse-item>
         <el-collapse-item name="4">
           <template slot="title">
-            <p class="title">添加部门成员</p>
+            <p class="title">设置部门成员信息</p>
           </template>
-          <el-form
-            :model="addForm"
-            style="margin-top: 20px; width: 50%, margin: auto;"
+          <el-table
+            :data="userInfoTable"
+            height="200"
+            border
+            style="width: 75%; margin: auto"
+            max-height="200"
+            @cell-click="tabClick"
+            :row-class-name="tableRowClassName"
           >
-            <el-form-item>
-              <div style="margin-top: 20px">
-                <el-checkbox-group v-model="userCheckbox" size="small">
-                  <el-checkbox label="用户1" border></el-checkbox>
-                  <el-checkbox label="用户2" border></el-checkbox>
-                </el-checkbox-group>
-              </div>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="apply">添加</el-button>
-            </el-form-item>
-          </el-form>
+            <el-table-column prop="uid" label="用户ID" width="180">
+            </el-table-column>
+            <el-table-column prop="username" label="用户名" width="180">
+            </el-table-column>
+            <el-table-column prop="realname" label="真实姓名">
+            </el-table-column>
+            <el-table-column label="身份证号">
+              <template slot-scope="scope"
+                ><el-input
+                  v-model="scope.row.idcode"
+                  placeholder="请输入身份证号"
+                ></el-input
+              ></template>
+            </el-table-column>
+          </el-table>
+          <el-button type="primary" round icon="el-icon-upload2"></el-button>
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -200,17 +203,20 @@ export default {
           content: "发布公告",
         },
       ],
-      memberTable: [
+      data: [],
+      value: [],
+      userInfoTable: [
         {
           uid: "120181080602",
+          username: "KingFarGrace",
           realname: "张凯恒",
         },
       ],
-      userCheckbox: [],
     };
   },
   methods: {
     apply() {},
+    filterMethod() {},
   },
 };
 </script>

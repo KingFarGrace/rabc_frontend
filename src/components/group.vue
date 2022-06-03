@@ -80,44 +80,17 @@
         </el-collapse-item>
         <el-collapse-item name="2">
           <template slot="title">
-            <p class="title">移除群成员</p>
+            <p class="title">管理群成员</p>
           </template>
-          <el-table
-            :data="memberTable"
-            style="width: 50%; margin: auto"
-            max-height="200"
+          <el-transfer
+            filterable
+            :filter-method="filterMethod"
+            filter-placeholder="请输入用户ID"
+            v-model="value"
+            :data="data"
+            :titles="['非组内成员', '组内成员']"
           >
-            <el-table-column prop="uid" label="用户ID" width="180">
-            </el-table-column>
-            <el-table-column prop="realname" label="用户真实姓名" width="180">
-            </el-table-column>
-            <el-table-column label="操作"
-              ><template>
-                <el-button type="danger">移出群组</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-collapse-item>
-        <el-collapse-item name="3">
-          <template slot="title">
-            <p class="title">添加群成员</p>
-          </template>
-          <el-form
-            :model="addForm"
-            style="margin-top: 20px; width: 50%; margin: auto"
-          >
-            <el-form-item>
-              <div>
-                <el-input
-                  v-model="searchArea"
-                  placeholder="请输入用户名/用户ID"
-                ></el-input>
-              </div>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="search">搜索</el-button>
-            </el-form-item>
-          </el-form>
+          </el-transfer>
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -204,10 +177,13 @@ export default {
         },
       ],
       searchArea: [],
+      value: [],
+      data: [],
     };
   },
   methods: {
     sendMessages() {},
+    filterMethod() {},
   },
 };
 </script>
