@@ -16,17 +16,18 @@
               label-width="70px"
               class="demo-ruleForm"
             >
-              <el-form-item label="邮箱" prop="email" style="width: 355px">
-                <el-input v-model.number="ruleForm.email"></el-input>
+              <el-form-item label="用户名" prop="username" style="width: 355px">
+                <el-input v-model.number="ruleForm.username"></el-input>
               </el-form-item>
-              <el-form-item label="姓名" prop="name" style="width: 355px">
-                <el-input v-model.number="ruleForm.name"></el-input>
+              <el-form-item label="真实姓名" prop="realname" style="width: 355px">
+                <el-input v-model.number="ruleForm.realname"></el-input>
               </el-form-item>
               <el-form-item label="密码" prop="pass" style="width: 355px">
                 <el-input
                   type="password"
                   v-model="ruleForm.pass"
                   autocomplete="off"
+                  show-password
                 ></el-input>
               </el-form-item>
               <el-form-item
@@ -38,6 +39,7 @@
                   type="password"
                   v-model="ruleForm.checkPass"
                   autocomplete="off"
+                  show-password
                 ></el-input>
               </el-form-item>
               <el-form-item>
@@ -74,7 +76,7 @@
 export default {
   name: "Register",
   data() {
-    var checkEmail = (rule, value, callback) => {
+    var checkUsername = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请输入邮箱"));
       }
@@ -82,7 +84,7 @@ export default {
         return callback(new Error("邮箱不能为空"));
       }
     };
-    var checkName = (rule, value, callback) => {
+    var checkRealname = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请输入姓名"));
       }
@@ -111,8 +113,8 @@ export default {
     };
     return {
       ruleForm: {
-        email: "",
-        name: "",
+        username: "",
+        realname: "",
         pass: "",
         checkPass: "",
         msg: "",
@@ -123,8 +125,8 @@ export default {
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        email: [{ validator: checkEmail, trigger: "blur" }],
-        name: [{ validator: checkName, trigger: "blur" }],
+        username: [{ validator: checkUsername, trigger: "blur" }],
+        realname: [{ validator: checkRealname, trigger: "blur" }],
       },
     };
   },

@@ -2,7 +2,7 @@
   <div>
     <el-row><h1>404 NOT FOUND</h1></el-row>
     <el-row
-      ><el-button type="primary" icon="el-icon-arrow-left" @back="goBack"
+      ><el-button type="primary" icon="el-icon-arrow-left" @click="returnLast"
         >返回</el-button
       ></el-row
     >
@@ -13,8 +13,8 @@
 export default {
   name: "NotFound",
   methods: {
-    goBack() {
-      console.log("go back");
+    returnLast() {
+      this.$router.go(-1);
     },
   },
 };
